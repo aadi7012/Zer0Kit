@@ -1,0 +1,34 @@
+{
+  "entities": {
+    "Resume": {
+      "title": "Resume Data",
+      "description": "User's saved resume information",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "title": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "summary": { "type": "string" },
+        "experience": { 
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "education": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "createdAt": { "type": "number", "description": "Timestamp" },
+        "updatedAt": { "type": "number", "description": "Timestamp" }
+      },
+      "required": ["userId", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/resumes/{resumeId}": {
+      "schema": { "$ref": "#/entities/Resume" },
+      "description": "Saved Resumes per user"
+    }
+  }
+}
